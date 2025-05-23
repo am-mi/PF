@@ -310,12 +310,14 @@
       </div>
 
       <script>
-        var msnry = new Masonry('#gallery', {
-          itemSelector: '.grid-item',
-          columnWidth: '.grid-item',
-          percentPosition: true,
-          gutter: 16
-        });
+            imagesLoaded('#gallery', function () {
+              new Masonry('#gallery', {
+                itemSelector: '.grid-item',
+                columnWidth: '.grid-item',
+                percentPosition: true,
+                gutter: 16
+              });
+            });
 
         function openLightbox(imageUrl) {
           const lightbox = document.getElementById("lightbox");
