@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>senhinketsu portfolio - logo</title>
+  <link rel="icon" type="image/png" href="./img/logo.png" sizes="64x64">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<body class="bg-gray-100 px-6 py-10 text-gray-900 selection:bg-sky-300">
+  <header class="fixed inset-x-0 top-0 z-50 pt-4 px-10">
+    <div
+      class="flex h-[60px] items-center px-10 md:px-0 md:py-0 md:py-[20px] md:pl-[80px] md:pr-11 lg:pl-[120px] bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-3xl">
+      <h1 class="flex flex-1 items-center">
+        <a href="./index.html" aria-label="Home" class="inline-block">
+          <img src="./img/logo.png" alt="Logo" class="max-w-[70px] h-auto">
+        </a>
+      </h1>
+      <button id="menu-toggle" class="relative z-50 flex h-10 w-10 flex-col items-center justify-center md:hidden">
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 translate-y-3"></span>
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300"></span>
+        <span
+          class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 -translate-y-3"></span>
+      </button>
+
+      <!-- PC-MENU -->
+      <div class="hidden justify-center md:flex md:flex-1 md:justify-end relative">
+        <ul class="flex space-x-2 md:space-x-4">
+
+          <!-- WORKS -->
+          <li class="relative">
+            <a href="#" id="dropdown-button"
+              class="flex items-center space-x-2 whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]">
+              WORKS
+              <svg id="dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+
+            <!-- 下拉菜单 -->
+            <ul id="dropdown-menu" class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-lg hidden">
+              <li><a href="./web.html" class="block px-4 py-2 hover:bg-gray-200">web design</a></li>
+              <li><a href="./graphic1.html" class="block px-4 py-2 hover:bg-gray-200">graphic</a></li>
+              <li><a href="./photo.html" class="block px-4 py-2 hover:bg-gray-200">other</a></li>
+            </ul>
+          </li>
+
+          <!-- 其他菜单项 -->
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="./about.html">ABOUT</a></li>
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="./contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <script>
+
+        //PC子菜单弹出
+        document.getElementById("dropdown-button").addEventListener("click", function (event) {
+          event.preventDefault(); // 防止页面跳转
+          var menu = document.getElementById("dropdown-menu");
+          var icon = document.getElementById("dropdown-icon");
+
+          menu.classList.toggle("hidden"); // 切换菜单显示状态
+          icon.classList.toggle("rotate-180"); // 旋转箭头
+        });
+
+        // 点击页面其他地方时关闭菜单
+        document.addEventListener("click", function (event) {
+          var menu = document.getElementById("dropdown-menu");
+          var button = document.getElementById("dropdown-button");
+
+          if (!button.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.add("hidden");
+            document.getElementById("dropdown-icon").classList.remove("rotate-180");
+          }
+        });
+
+        //移动端子菜单弹出
+        document.addEventListener("DOMContentLoaded", function () {
+          const mobileDropdownButton = document.getElementById("mobile-dropdown-button");
+          const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu");
+          const mobileDropdownIcon = document.getElementById("mobile-dropdown-icon");
+
+          mobileDropdownButton.addEventListener("click", function (event) {
+            event.preventDefault(); // 防止页面跳转
+            mobileDropdownMenu.classList.toggle("hidden"); // 切换显示
+            mobileDropdownIcon.classList.toggle("rotate-180"); // 旋转箭头
+          });
+        });
+
+      </script>
+
+  </header>
+
+  <div id="menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-30 hidden transition-opacity duration-300"></div>
+
+  <div id="mobile-menu"
+    class="fixed right-[-100%] top-0 z-40 h-full w-2/3 max-w-[300px] pr-10 bg-amber-900 bg-opacity-70 text-white transition-transform duration-300 md:hidden flex flex-col items-center justify-center">
+    <ul class="flex flex-col items-center space-y-6 pt-20">
+      <li class="relative w-full text-center">
+        <button id="mobile-dropdown-button"
+          class="w-full flex items-center justify-center space-x-2 text-lg text-white hover:text-sky-500">
+          WORKS
+          <svg id="mobile-dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="mobile-dropdown-menu" class="hidden flex flex-col items-center space-y-2 mt-2">
+          <li><a href="./web.html" class="block px-4 py-2 hover:text-sky-300">WEB DESIGN</a></li>
+          <li><a href="./graphic1.html" class="block px-4 py-2 hover:text-sky-300">GRAPHIC</a></li>
+          <li><a href="./photo.html" class="block px-4 py-2 hover:text-sky-300">OTHER</a></li>
+        </ul>
+      </li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="./about.html">ABOUT</a></li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="./contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuOverlay = document.getElementById("menu-overlay");
+
+      menuToggle.addEventListener("click", function () {
+        const isOpen = mobileMenu.style.right === "0px";
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      menuOverlay.addEventListener("click", closeMenu);
+
+      function openMenu() {
+        mobileMenu.style.right = "0px";
+        menuOverlay.classList.remove("hidden");
+        menuOverlay.classList.add("opacity-100");
+        menuToggle.classList.add("open");
+      }
+
+      function closeMenu() {
+        mobileMenu.style.right = "-100%";
+        menuOverlay.classList.add("hidden");
+        menuOverlay.classList.remove("opacity-100");
+        menuToggle.classList.remove("open");
+      }
+    });
+
+  </script>
+
+  <style>
+    .hamburger-line {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+  </style>
+
+  <div class="max-w-4xl py-10 mx-auto">
+    <h1 class="text-4xl text-black font-bold py-10 text-center">LOGO</h1>
+    <nav class="flex justify-center items-center text-gray-800 font-semibold">
+      <ul class="flex flex-wrap justify-center text-center">
+        <li class="mx-5 py-3">
+          <a href="./graphic1.html"
+            class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">グラフィック1</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="./graphic2.html"
+            class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">グラフィック2</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="./logo.html"
+            class="text-sm text-sky-700 px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">ロゴ</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="./Illustrator.html"
+            class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">イラスト</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="mt-10">
+
+      <div class="mb-4 md:mb-0 w-full mx-auto relative">
+        <div class="px-4 lg:px-0">
+          <h2 class="py-5 text-4xl font-semibold text-gray-800 italic">
+            仮想ブランドロゴ企画案</h2>
+        </div>
+
+        <div class="flex flex-col lg:flex-row ">
+
+          <div class="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full">
+            <h2 class="text-2xl text-gray-800 font-semibold mb-4 mt-4">daily blankとは</h2>
+            <p class="pb-6">筆記具や手帳などのステーショナリーの販売を行っているメーカー。
+              毎日（デイリー）の空白（ブランク）を豊にするという意味になります。
+              統一感があり、落ち着いたモノトーンで、変化に富んだ。大人らしいさを演出。</p>
+
+            <p class="pb-6">手書きの手帳や文具はデジタル化が進んでいる現代でも人気があり、文化として定着しています。
+              特にアジア圏では、若者の間で趣味として大いに支持されており、手帳のカスタマイズやコラージュはインターネットで人気があるようです。手帳をオリジナリティ豊かな作品に仕上げ、日々の生活をシャアすることで楽しんでいます。また一種のアート作品にもなっています。さらに、さまざまなスタイルの手帳や文具が誕生し、日々進化しています。このような流れの中で、一風変わったシンプルながら面白みのある商品を提供し、素材の可能性を拡げたいという考えから、このような会社ログを想定しました。
+            </p>
+            <img src="img/logo1.jpg" class="w-full pb-6 lg:rounded" onclick="openLightbox('img/logo1.jpg')" />
+
+            <p class="pb-6">デザイン意図<br>
+              つながっているアルファベットのyとlは、あなた(you)とわたし(i)のつながりを表している。
+              文房具で人と人をつなぐという理念となる。
+              さらに、組み合わせた文字で抽象的な人の顔を表している。人と生活、人と創造の関連性を意味する。</p>
+            <img src="./img/logo2.jpg" class="w-full pb-6 lg:rounded" onclick="openLightbox('./img/logo2.jpg')" />
+            <img src="./img/logo-c.jpg" class="w-full pb-6 lg:rounded" onclick="openLightbox('./img/logo-c.jpg')" />
+            <img src="./img/logo-bc.jpg" class="w-full pb-6 lg:rounded" onclick="openLightbox('./img/logo-bc.jpg')" />
+            <img src="./img/logo-l.jpg" class="w-full pb-6 lg:rounded" onclick="openLightbox('./img/logo-l.jpg')" />
+            <img src="./img/logo-p.jpg" class="w-full pb-3 lg:rounded" onclick="openLightbox('./img/logo-p.jpg')" />
+            <p class="pb-6 text-center text-gray-400 text-xs italic ">レターセット・名刺　実物写真</p>
+
+            <div class="grid grid-cols-2 gap-6 pb-3 place-items-center">
+              <img src="./img/calendar-1.jpg" class="w-full max-w-xs lg:rounded"
+                onclick="openLightbox('./img/calendar-1.jpg')" />
+              <img src="./img/calendar-4.jpg" class="w-full max-w-xs lg:rounded"
+                onclick="openLightbox('./img/calendar-4.jpg')" />
+            </div>
+            <p class="pb-6 text-center text-gray-400 text-xs italic ">展開グッズ（カレンダー）</p>
+            <img src="./img/logo-poster.jpg" class="w-full pb-3 lg:rounded"
+              onclick="openLightbox('./img/logo-posterjpg')" />
+            <p class="pb-6 text-center text-gray-400 text-xs italic ">展開　ポスター
+            </p>
+
+          </div>
+        </div>
+    </main>
+
+    <div id="lightbox"
+      class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center hidden transition-opacity duration-300">
+      <img id="lightbox-image" class="max-w-full max-h-[90vh] rounded-lg shadow-lg">
+    </div>
+    <button id="backToTopBtn"
+      class="hidden fixed bottom-6 right-6 z-50 rounded-full bg-sky-300 text-white p-3 shadow-lg hover:bg-sky-500 active:scale-95 transition-all duration-200">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+    <script>
+      function openLightbox(imageUrl) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+
+        lightboxImage.src = imageUrl;
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("opacity-100");
+      }
+
+      document.getElementById("lightbox").addEventListener("click", function () {
+        this.classList.add("hidden");
+      });
+
+      const backToTopBtn = document.getElementById("backToTopBtn");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove("hidden");
+        } else {
+          backToTopBtn.classList.add("hidden");
+        }
+      });
+
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+    </script>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>senhinketsu portfolio - photo</title>
+  <link rel="icon" type="image/png" href="./img/logo.png" sizes="64x64">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+</head>
+
+
+<body class="bg-gray-100 px-6 py-10 text-gray-900 selection:bg-sky-300">
+  <header class="fixed inset-x-0 top-0 z-50 pt-4 px-10">
+    <div
+      class="flex h-[60px] items-center px-10 md:px-0 md:py-0 md:py-[20px] md:pl-[80px] md:pr-11 lg:pl-[120px] bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-3xl">
+      <h1 class="flex flex-1 items-center">
+        <a href="./index.html" aria-label="Home" class="inline-block">
+          <img src="./img/logo.png" alt="Logo" class="max-w-[70px] h-auto">
+        </a>
+      </h1>
+
+      <button id="menu-toggle" class="relative z-50 flex h-10 w-10 flex-col items-center justify-center md:hidden">
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 translate-y-3"></span>
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300"></span>
+        <span
+          class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 -translate-y-3"></span>
+      </button>
+
+      <div class="hidden justify-center md:flex md:flex-1 md:justify-end relative">
+        <ul class="flex space-x-2 md:space-x-4">
+
+          <li class="relative">
+            <a href="#" id="dropdown-button"
+              class="flex items-center space-x-2 whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]">
+              WORKS
+              <svg id="dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+
+            <ul id="dropdown-menu" class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-lg hidden">
+              <li><a href="./web.html" class="block px-4 py-2 hover:bg-gray-200">web design</a></li>
+              <li><a href="./graphic1.html" class="block px-4 py-2 hover:bg-gray-200">graphic</a></li>
+              <li><a href="./photo.html" class="block px-4 py-2 hover:bg-gray-200">other</a></li>
+            </ul>
+          </li>
+
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="./about.html">ABOUT</a></li>
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="./contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <script>
+
+        document.getElementById("dropdown-button").addEventListener("click", function (event) {
+          event.preventDefault();
+          var menu = document.getElementById("dropdown-menu");
+          var icon = document.getElementById("dropdown-icon");
+
+          menu.classList.toggle("hidden");
+          icon.classList.toggle("rotate-180");
+        });
+
+        document.addEventListener("click", function (event) {
+          var menu = document.getElementById("dropdown-menu");
+          var button = document.getElementById("dropdown-button");
+
+          if (!button.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.add("hidden");
+            document.getElementById("dropdown-icon").classList.remove("rotate-180");
+          }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const mobileDropdownButton = document.getElementById("mobile-dropdown-button");
+          const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu");
+          const mobileDropdownIcon = document.getElementById("mobile-dropdown-icon");
+
+          mobileDropdownButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            mobileDropdownMenu.classList.toggle("hidden");
+            mobileDropdownIcon.classList.toggle("rotate-180");
+          });
+        });
+
+      </script>
+
+  </header>
+
+  <div id="menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-30 hidden transition-opacity duration-300"></div>
+  <div id="mobile-menu"
+    class="fixed right-[-100%] top-0 z-40 h-full w-2/3 max-w-[300px] pr-10 bg-amber-900 bg-opacity-70 text-white transition-transform duration-300 md:hidden flex flex-col items-center justify-center">
+    <ul class="flex flex-col items-center space-y-6 pt-20">
+      <li class="relative w-full text-center">
+        <button id="mobile-dropdown-button"
+          class="w-full flex items-center justify-center space-x-2 text-lg text-white hover:text-sky-500">
+          WORKS
+          <svg id="mobile-dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="mobile-dropdown-menu" class="hidden flex flex-col items-center space-y-2 mt-2">
+          <li><a href="./web.html" class="block px-4 py-2 hover:text-sky-300">WEB DESIGN</a></li>
+          <li><a href="./graphic1.html" class="block px-4 py-2 hover:text-sky-300">GRAPHIC</a></li>
+          <li><a href="./photo.html" class="block px-4 py-2 hover:text-sky-300">OTHER</a></li>
+        </ul>
+      </li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="./about.html">ABOUT</a></li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="./contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuOverlay = document.getElementById("menu-overlay");
+
+      menuToggle.addEventListener("click", function () {
+        const isOpen = mobileMenu.style.right === "0px";
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      menuOverlay.addEventListener("click", closeMenu);
+
+      function openMenu() {
+        mobileMenu.style.right = "0px";
+        menuOverlay.classList.remove("hidden");
+        menuOverlay.classList.add("opacity-100");
+        menuToggle.classList.add("open");
+      }
+
+      function closeMenu() {
+        mobileMenu.style.right = "-100%";
+        menuOverlay.classList.add("hidden");
+        menuOverlay.classList.remove("opacity-100");
+        menuToggle.classList.remove("open");
+      }
+    });
+
+  </script>
+
+  <style>
+    .hamburger-line {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .grid-item {
+      width: 45%;
+      margin-bottom: 20px;
+    }
+
+    .masonry {
+      column-count: 2;
+      column-gap: 20px;
+    }
+
+    .masonry-item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px;
+      break-inside: avoid;
+    }
+
+    #gallery {
+      max-width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+
+  <div class="max-w-4xl py-10 mx-auto">
+    <h1 class="text-4xl text-black font-bold py-8 text-center">PHOTO</h1>
+
+    <div class="max-w-3xl pt-10 mx-auto">
+      <h1 class="text-4xl text-black font-bold py-8 text-center">
+        <div id="gallery" class="flex flex-wrap justify-center mx-auto my-8">
+
+          <div class="grid-item" onclick="openLightbox('./img/photo-bath.jpg')">
+            <img src="./img/photo-bath.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-mon.jpg')">
+            <img src="./img/photo-mon.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-me.jpg')">
+            <img src="./img/photo-me.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-a.jpg')">
+            <img src="./img/photo-a.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-sk.jpg')">
+            <img src="./img/photo-sk.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-fire.jpg')">
+            <img src="./img/photo-fire.jpg">
+          </div>
+
+          <div class="grid-item" onclick="openLightbox('./img/photo-rabbit.jpg')">
+            <img src="./img/photo-rabbit.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-fsm.jpg')">
+            <img src="./img/photo-fsm.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-ma.jpg')">
+            <img src="./img/photo-ma.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-msn.jpg')">
+            <img src="./img/photo-msn.jpg">
+          </div>
+
+          <div class="grid-item" onclick="openLightbox('./img/photo-nara.jpg')">
+            <img src="./img/photo-nara.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-tai.jpg')">
+            <img src="./img/photo-tai.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-gr.jpg')">
+            <img src="./img/photo-gr.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-nama.jpg')">
+            <img src="./img/photo-nama.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-flower.jpg')">
+            <img src="./img/photo-flower.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-cafe.jpg')">
+            <img src="./img/photo-cafe.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-me2.jpg')">
+            <img src="./img/photo-me2.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-ty.jpg')">
+            <img src="./img/photo-ty.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-room.jpg')">
+            <img src="./img/photo-room.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-mon2.jpg')">
+            <img src="./img/photo-mon2.jpg">
+          </div>
+          <div class="grid-item" onclick="openLightbox('./img/photo-10.jpg')">
+            <img src="./img/photo-10.jpg">
+          </div>
+
+
+          <div id="lightbox" class="fixed inset-0 bg-white bg-opacity-50 flex justify-center items-center hidden 
+          opacity-0 scale-90 transition-all duration-500 ease-in-out">
+            <img id="lightbox-image" class="max-w-[90vw] max-h-[80vh] object-contain">
+          </div>
+          <button id="backToTopBtn"
+            class="hidden fixed bottom-6 right-6 z-50 rounded-full bg-sky-300 text-white p-3 shadow-lg hover:bg-sky-500 active:scale-95 transition-all duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+            </svg>
+          </button>
+          <script>
+            var msnry = new Masonry('#gallery', {
+              itemSelector: '.grid-item',
+              columnWidth: '.grid-item',
+              percentPosition: true,
+              gutter: 16
+            });
+
+            function openLightbox(imageUrl) {
+              const lightbox = document.getElementById("lightbox");
+              const lightboxImage = document.getElementById("lightbox-image");
+
+              lightboxImage.src = imageUrl;
+              lightbox.classList.remove("hidden");
+              lightbox.classList.add("opacity-100");
+            }
+
+            document.getElementById("lightbox").addEventListener("click", function () {
+              this.classList.add("hidden");
+            });
+
+            const backToTopBtn = document.getElementById("backToTopBtn");
+
+            window.addEventListener("scroll", () => {
+              if (window.scrollY > 300) {
+                backToTopBtn.classList.remove("hidden");
+              } else {
+                backToTopBtn.classList.add("hidden");
+              }
+            });
+
+            backToTopBtn.addEventListener("click", () => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+
+          </script>
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>

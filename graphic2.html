@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>senhinketsu portfolio - graphic2</title>
+  <link rel="icon" type="image/png" href="./img/logo.png" sizes="64x64">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+</head>
+
+
+<body class="bg-gray-100 px-6 py-10 text-gray-900 selection:bg-sky-300">
+  <header class="fixed inset-x-0 top-0 z-50 pt-4 px-10">
+    <div
+      class="flex h-[60px] items-center px-10 md:px-0 md:py-0 md:py-[20px] md:pl-[80px] md:pr-11 lg:pl-[120px] bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-3xl">
+      <h1 class="flex flex-1 items-center">
+        <a href="./index.html" aria-label="Home" class="inline-block">
+          <img src="./img/logo.png" alt="Logo" class="max-w-[70px] h-auto">
+        </a>
+      </h1>
+
+
+      <button id="menu-toggle" class="relative z-50 flex h-10 w-10 flex-col items-center justify-center md:hidden">
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 translate-y-3"></span>
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300"></span>
+        <span
+          class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 -translate-y-3"></span>
+      </button>
+
+      <div class="hidden justify-center md:flex md:flex-1 md:justify-end relative">
+        <ul class="flex space-x-2 md:space-x-4">
+
+          <li class="relative">
+            <a href="#" id="dropdown-button"
+              class="flex items-center space-x-2 whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]">
+              WORKS
+              <svg id="dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+
+            <ul id="dropdown-menu" class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-lg hidden">
+              <li><a href="./web.html" class="block px-4 py-2 hover:bg-gray-200">web design</a></li>
+              <li><a href="./graphic1.html" class="block px-4 py-2 hover:bg-gray-200">graphic</a></li>
+              <li><a href="./photo.html" class="block px-4 py-2 hover:bg-gray-200">other</a></li>
+            </ul>
+          </li>
+
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="./about.html">ABOUT</a></li>
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="./contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <script>
+
+        document.getElementById("dropdown-button").addEventListener("click", function (event) {
+          event.preventDefault();
+          var menu = document.getElementById("dropdown-menu");
+          var icon = document.getElementById("dropdown-icon");
+
+          menu.classList.toggle("hidden");
+          icon.classList.toggle("rotate-180");
+        });
+
+        document.addEventListener("click", function (event) {
+          var menu = document.getElementById("dropdown-menu");
+          var button = document.getElementById("dropdown-button");
+
+          if (!button.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.add("hidden");
+            document.getElementById("dropdown-icon").classList.remove("rotate-180");
+          }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const mobileDropdownButton = document.getElementById("mobile-dropdown-button");
+          const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu");
+          const mobileDropdownIcon = document.getElementById("mobile-dropdown-icon");
+
+          mobileDropdownButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            mobileDropdownMenu.classList.toggle("hidden");
+            mobileDropdownIcon.classList.toggle("rotate-180");
+          });
+        });
+
+      </script>
+
+  </header>
+
+  <div id="menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-30 hidden transition-opacity duration-300"></div>
+
+  <div id="mobile-menu"
+    class="fixed right-[-100%] top-0 z-40 h-full w-2/3 max-w-[300px] pr-10 bg-amber-900 bg-opacity-70 text-white transition-transform duration-300 md:hidden flex flex-col items-center justify-center">
+    <ul class="flex flex-col items-center space-y-6 pt-20">
+      <li class="relative w-full text-center">
+        <button id="mobile-dropdown-button"
+          class="w-full flex items-center justify-center space-x-2 text-lg text-white hover:text-sky-500">
+          WORKS
+          <svg id="mobile-dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="mobile-dropdown-menu" class="hidden flex flex-col items-center space-y-2 mt-2">
+          <li><a href="./web.html" class="block px-4 py-2 hover:text-sky-300">WEB DESIGN</a></li>
+          <li><a href="./graphic1.html" class="block px-4 py-2 hover:text-sky-300">GRAPHIC</a></li>
+          <li><a href="./photo.html" class="block px-4 py-2 hover:text-sky-300">OTHER</a></li>
+        </ul>
+      </li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="./about.html">ABOUT</a></li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="./contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuOverlay = document.getElementById("menu-overlay");
+
+      // 切换菜单开关
+      menuToggle.addEventListener("click", function () {
+        const isOpen = mobileMenu.style.right === "0px";
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // 点击遮罩层时关闭菜单
+      menuOverlay.addEventListener("click", closeMenu);
+
+      function openMenu() {
+        mobileMenu.style.right = "0px";  // 滑入可见区域
+        menuOverlay.classList.remove("hidden"); // 显示遮罩层
+        menuOverlay.classList.add("opacity-100"); // 淡入
+        menuToggle.classList.add("open"); // 触发汉堡动画
+      }
+
+      function closeMenu() {
+        mobileMenu.style.right = "-100%";  // 滑出隐藏
+        menuOverlay.classList.add("hidden"); // 隐藏遮罩层
+        menuOverlay.classList.remove("opacity-100"); // 淡出
+        menuToggle.classList.remove("open"); // 复原汉堡按钮动画
+      }
+    });
+
+  </script>
+
+  <style>
+    .hamburger-line {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .grid-item {
+      width: 30%;
+      margin-bottom: 16px;
+    }
+
+    .masonry {
+      column-count: 3;
+      column-gap: 16px;
+    }
+
+    .masonry-item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 16px;
+      break-inside: avoid;
+    }
+  </style>
+
+  <div class="max-w-4xl py-10 mx-auto">
+    <h1 class="text-4xl text-black font-bold py-10 text-center">GRAPHIC Ⅱ</h1>
+
+    <nav class="flex justify-center items-center text-gray-800 font-semibold">
+      <ul class="flex flex-wrap justify-center text-center">
+        <li class="mx-5 py-3">
+          <a href="./graphic1.html"
+            class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">グラフィック1</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="./graphic2.html"
+            class="text-sm text-sky-700 px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">グラフィック2</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="./logo.html" class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">ロゴ</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="./Illustrator.html"
+            class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">イラスト</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="gallery" class="flex flex-wrap justify-center mt-8">
+
+      <div class="grid-item"
+        onclick="openModal('まめ', '制作時期：2022年\n制作期間：2日\n使用ツール：Illustrator\n日本でのライフスタイルをゆるやかに発信する、個人メディアプロジェクト「豆大福」のアイコンです。名前の「豆大福」は、日本らしいスイーツとして親しみやすく、柔らかくてほっとするイメージを持ちながら、自分自身（“豆”のように小さくても味のある存在）を表現する意味も込めています。ロゴ＆アイコンでは、漢字の「豆」に表情を仕込んで擬人化。文字がそのままキャラクターになることで、見る人に思わず笑顔になってもらえるような、温かみのあるデザインを意識しました。日常の小さな気づきや文化の違い、美味しいものや可愛いものなど、「豆大福」らしい目線で発信していきます。', ['./img/mame1.jpg', './img/mame2.jpg','./img/mame3.jpg'])">
+        <img src="./img/mame1.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+
+      <div class="grid-item"
+        onclick="openModal('名刺', '制作時期：2020年\n制作期間：1日\n使用ツール：Illustrator\n親戚の依頼で名刺をデザインしました。横型・縦型の2パターンを制作しています。不動産関連の事業に合わせて、信頼感と誠実さが伝わるようなミニマルなデザインに仕上げました。ロゴはイニシャルの「H」の縦線をベースに、屋根や壁を想起させるラインを加え、住宅を連想させるシンプルなモチーフとして構成。過度な装飾を避け、余白とバランスを意識することで、名刺としての機能性とデザイン性の両立を図りました。', ['./img/hiruma-bc-t.jpg', './img/hiruma-bc-y.jpg'])">
+        <img src="./img/hiruma-bc-t.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item"
+        onclick="openModal('クリスマスバナー', '制作時期：2021年\n制作期間：1週間\n使用ツール：Illustrator/Photoshop\n巨大クリスマスバナーデザインコンテスト出品用作品。テーマ：躍動する新宿。シンプルな図形を用いてクリスマスツリーと多様な人々を構成し、色や形のバリエーションで新宿区の多様性を表現しました。構図全体にはリズムと広がりを持たせ、賑わいと活気にあふれた「躍動感」を視覚的に演出しています。見る人の目を引きつけながらも、祝祭感と地域らしさが共存するデザインを目指しました。', './img/shjk.png')">
+        <img src="./img/shjk.png"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+    </div>
+    <div id="modal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden overflow-y-auto">
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-xl max-h-[80vh] overflow-y-auto">
+        <div id="modal-images" class="flex flex-col gap-4 mb-4">
+        </div>
+        <h2 id="modal-title" class="text-2xl py-4 font-bold"></h2>
+        <p id="modal-content" class="py-4 text-gray-600 leading-relaxed"></p>
+        <div class="text-center">
+          <button onclick="closeModal()"
+            class="my-4 px-6 py-2 bg-sky-700 text-white hover:bg-sky-600 active:scale-95 transition-transform duration-150 rounded-full">閉じる</button>
+        </div>
+      </div>
+    </div>
+    <button id="backToTopBtn"
+      class="hidden fixed bottom-6 right-6 z-50 rounded-full bg-sky-300 text-white p-3 shadow-lg hover:bg-sky-500 active:scale-95 transition-all duration-200">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+    <script>
+      var msnry = new Masonry('#gallery', {
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-item',
+        percentPosition: true,
+        gutter: 16
+      });
+      function openModal(title, content, images) {
+        document.getElementById("modal-title").innerText = title;
+        document.getElementById("modal-content").innerText = content;
+
+        const imagesContainer = document.getElementById("modal-images");
+        imagesContainer.innerHTML = '';
+
+        if (typeof images === 'string') {
+          images = [images];
+        }
+
+        images.forEach(src => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.className = "w-full rounded-lg";
+          imagesContainer.appendChild(img);
+        });
+
+        document.getElementById("modal").classList.remove("hidden");
+      }
+      function closeModal() {
+        document.getElementById("modal").classList.add("hidden");
+        document.getElementById("modal-images").innerHTML = "";
+      }
+
+
+      const backToTopBtn = document.getElementById("backToTopBtn");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove("hidden");
+        } else {
+          backToTopBtn.classList.add("hidden");
+        }
+      });
+
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </div>
+</body>
+
+</html>

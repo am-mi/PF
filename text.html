@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自由落体胶囊标签</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+
+    .tag {
+      position: absolute;
+      padding: 10px 20px;
+      border: 2px solid black;
+      border-radius: 50px;
+      background: white;
+      font-size: 38px;
+      font-family: Arial, sans-serif;
+      cursor: grab;
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    class Tag {
+      constructor(text, x, y) {
+        this.text = text;
+        this.x = x;
+        this.y = y;
+        this.vy = Math.random() * 2 + 1;
+        this.vx = Math.random() * 2 - 1;
+        this.dragging = false;
+        this.createElement();
+      }
+
+      createElement() {
+        this.element = document.createElement('div');
+        this.element.className = 'tag';
+        this.element.innerText = this.text;
+        document.body.appendChild(this.element);
+        this.updatePosition();
+        this.addEventListeners();
+      }
+
+      updatePosition() {
+        this.element.style.left = `${Math.min(Math.max(this.x, 0), window.innerWidth - this.element.offsetWidth)}px`;
+        this.element.style.top = `${Math.min(Math.max(this.y, 0), window.innerHeight - this.element.offsetHeight)}px`;
+      }
+
+      addEventListeners() {
+        this.element.addEventListener('mousedown', (e) => {
+          this.dragging = true;
+          this.offsetX = e.clientX - this.x;
+          this.offsetY = e.clientY - this.y;
+          this.vy = 0; // 停止自由落体
+          this.vx = 0; // 停止水平移动
+        });
+
+        document.addEventListener('mouseup', () => {
+          this.dragging = false;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (this.dragging) {
+            this.x = e.clientX - this.offsetX;
+            this.y = e.clientY - this.offsetY;
+            this.updatePosition();
+          }
+        });
+      }
+
+      fall() {
+        if (!this.dragging) {
+          this.vy += 0.1; // 模拟重力
+          this.y += this.vy;
+
+          if (this.y + this.element.offsetHeight > window.innerHeight) {
+            this.y = window.innerHeight - this.element.offsetHeight;
+            this.vy *= -0.3; // 反弹阻力
+          }
+          if (this.x < 0 || this.x + this.element.offsetWidth > window.innerWidth) {
+            this.vx *= -0.3;
+          }
+        }
+        this.updatePosition();
+      }
+    }
+
+    const tags = ['graphic1', 'graphic2', 'graphic3', 'graphic4', 'graphic5'].map((text, i) =>
+      new Tag(text, Math.random() * window.innerWidth, Math.random() * window.innerHeight / 2)
+    );
+
+    function animate() {
+      tags.forEach(tag => tag.fall());
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+
+</html>
