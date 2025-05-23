@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>senhinketsu portfolio-Illustrator</title>
+  <a href="/">
+    <link rel="icon" type="image/png" href="./img/logo.png" sizes="64x64">
+  </a>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+</head>
+
+<body class="bg-gray-100 px-6 py-10 text-gray-900 selection:bg-sky-300">
+  <header class="fixed inset-x-0 top-0 z-50 pt-4 px-10">
+    <div
+      class="flex h-[60px] items-center px-10 md:px-0 md:py-0 md:py-[20px] md:pl-[80px] md:pr-11 lg:pl-[120px] bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-3xl">
+      <h1 class="flex flex-1 items-center">
+        <a href="/" aria-label="Home" class="inline-block">
+          <img src="./img/logo.png" alt="Logo" class="max-w-[70px] h-auto">
+        </a>
+      </h1>
+      <button id="menu-toggle" class="relative z-50 flex h-10 w-10 flex-col items-center justify-center md:hidden">
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 translate-y-3"></span>
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300"></span>
+        <span
+          class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 -translate-y-3"></span>
+      </button>
+      <div class="hidden justify-center md:flex md:flex-1 md:justify-end relative">
+        <ul class="flex space-x-2 md:space-x-4">
+          <li class="relative">
+            <a href="#" id="dropdown-button"
+              class="flex items-center space-x-2 whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]">
+              WORKS
+              <svg id="dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <ul id="dropdown-menu" class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-lg hidden">
+              <li><a href="/web.html" class="block px-4 py-2 hover:bg-gray-200">web design</a></li>
+              <li><a href="/graphic1.html" class="block px-4 py-2 hover:bg-gray-200">graphic</a></li>
+              <li><a href="/photo.html" class="block px-4 py-2 hover:bg-gray-200">other</a></li>
+            </ul>
+          </li>
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="/about.html">ABOUT</a></li>
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="/contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+      <script>
+        document.getElementById("dropdown-button").addEventListener("click", function (event) {
+          event.preventDefault();
+          var menu = document.getElementById("dropdown-menu");
+          var icon = document.getElementById("dropdown-icon");
+
+          menu.classList.toggle("hidden");
+          icon.classList.toggle("rotate-180");
+        });
+
+        document.addEventListener("click", function (event) {
+          var menu = document.getElementById("dropdown-menu");
+          var button = document.getElementById("dropdown-button");
+
+          if (!button.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.add("hidden");
+            document.getElementById("dropdown-icon").classList.remove("rotate-180");
+          }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const mobileDropdownButton = document.getElementById("mobile-dropdown-button");
+          const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu");
+          const mobileDropdownIcon = document.getElementById("mobile-dropdown-icon");
+
+          mobileDropdownButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            mobileDropdownMenu.classList.toggle("hidden");
+            mobileDropdownIcon.classList.toggle("rotate-180");
+          });
+        });
+      </script>
+  </header>
+  <div id="menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-30 hidden transition-opacity duration-300"></div>
+  <div id="mobile-menu"
+    class="fixed right-[-100%] top-0 z-40 h-full w-2/3 max-w-[300px] pr-10 bg-amber-900 bg-opacity-70 text-white transition-transform duration-300 md:hidden flex flex-col items-center justify-center">
+    <ul class="flex flex-col items-center space-y-6 pt-20">
+      <li class="relative w-full text-center">
+        <button id="mobile-dropdown-button"
+          class="w-full flex items-center justify-center space-x-2 text-lg text-white hover:text-sky-500">
+          WORKS
+          <svg id="mobile-dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="mobile-dropdown-menu" class="hidden flex flex-col items-center space-y-2 mt-2">
+          <li><a href="/web.html" class="block px-4 py-2 hover:text-sky-300">WEB DESIGN</a></li>
+          <li><a href="/graphic1.html" class="block px-4 py-2 hover:text-sky-300">GRAPHIC</a></li>
+          <li><a href="/photo.html" class="block px-4 py-2 hover:text-sky-300">OTHER</a></li>
+        </ul>
+      </li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="/about.html">ABOUT</a></li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="/contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuOverlay = document.getElementById("menu-overlay");
+
+      menuToggle.addEventListener("click", function () {
+        const isOpen = mobileMenu.style.right === "0px";
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      menuOverlay.addEventListener("click", closeMenu);
+
+      function openMenu() {
+        mobileMenu.style.right = "0px";
+        menuOverlay.classList.remove("hidden");
+        menuOverlay.classList.add("opacity-100");
+        menuToggle.classList.add("open");
+      }
+
+      function closeMenu() {
+        mobileMenu.style.right = "-100%";
+        menuOverlay.classList.add("hidden");
+        menuOverlay.classList.remove("opacity-100");
+        menuToggle.classList.remove("open");
+      }
+    });
+  </script>
+  <style>
+    .hamburger-line {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .grid-item {
+      width: 30%;
+      margin-bottom: 16px;
+    }
+
+    .masonry {
+      column-count: 3;
+      column-gap: 16px;
+    }
+
+    .masonry-item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 16px;
+      break-inside: avoid;
+    }
+  </style>
+  <div class="max-w-4xl py-10 mx-auto">
+    <h1 class="text-4xl text-black font-bold py-10 text-center">ILLUSTRATOR</h1>
+    <nav class="flex justify-center items-center text-gray-800 font-semibold">
+      <ul class="flex flex-wrap justify-center text-center">
+        <li class="mx-5 py-3">
+          <a href="/graphic1.html"
+            class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">グラフィック1</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="/graphic2.html"
+            class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">グラフィック2</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="/logo.html" class="text-sm px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">ロゴ</a>
+        </li>
+        <li class="mx-5 py-3">
+          <a href="/Illustrator.html"
+            class="text-sm text-sky-700 px-3 py-2 bg-[#ece8e0] rounded-full hover:bg-white/70 transition">イラスト</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="gallery" class="flex flex-wrap justify-center mt-8">
+
+      <div class="grid-item" onclick="openLightbox('img/i-toast.jpg')">
+        <img src="img/i-toast.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-bread.jpg')">
+        <img src="img/i-bread.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-mari.jpg')">
+        <img src="img/i-mari.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-cafe.jpg')">
+        <img src="img/i-cafe.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-oil.jpg')">
+        <img src="img/i-oil.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-bread-ch.jpg')">
+        <img src="img/i-bread-ch.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-soap.jpg')">
+        <img src="img/i-soap.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-mask.jpg')">
+        <img src="img/i-mask.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-rabbit.jpg')">
+        <img src="img/i-rabbit.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-plate.jpg')">
+        <img src="img/i-plate.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-dry.jpg')">
+        <img src="img/i-dry.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-cream.jpg')">
+        <img src="img/i-cream.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-blue-coat.jpg')">
+        <img src="img/i-blue-coat.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-blue-cookie.jpg')">
+        <img src="img/i-blue-cookie.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-blue-jellycat.jpg')">
+        <img src="img/i-blue-jellycat.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-blue-sea.jpg')">
+        <img src="img/i-blue-sea.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-match.jpg')">
+        <img src="img/i-match.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-melt.jpg')">
+        <img src="img/i-melt.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-dog.jpg')">
+        <img src="img/i-dog.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+      <div class="grid-item" onclick="openLightbox('img/i-curry.jpg')">
+        <img src="img/i-curry.jpg"
+          class="w-full object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl">
+      </div>
+
+
+
+      <div id="lightbox"
+        class="fixed inset-0 bg-white bg-opacity-60 flex justify-center items-center hidden transition-opacity duration-300">
+        <img id="lightbox-image" class="max-w-full max-h-[90vh] rounded-lg shadow-lg">
+      </div>
+
+      <script>
+        var msnry = new Masonry('#gallery', {
+          itemSelector: '.grid-item',
+          columnWidth: '.grid-item',
+          percentPosition: true,
+          gutter: 16
+        });
+
+        function openLightbox(imageUrl) {
+          const lightbox = document.getElementById("lightbox");
+          const lightboxImage = document.getElementById("lightbox-image");
+
+          lightboxImage.src = imageUrl;
+          lightbox.classList.remove("hidden");
+          lightbox.classList.add("opacity-100");
+        }
+
+        document.getElementById("lightbox").addEventListener("click", function () {
+          this.classList.add("hidden");
+        });
+
+      </script>
+    </div>
+</body>
+
+</html>

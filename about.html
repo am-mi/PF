@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>senhinketsu portfolio-about</title>
+  <a href="/">
+    <link rel="icon" type="image/png" href="./img/logo.png" sizes="64x64">
+  </a>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 px-6 py-10 text-gray-900 selection:bg-sky-300">
+  <header class="fixed inset-x-0 top-0 z-50 pt-4 px-10">
+    <div
+      class="flex h-[60px] items-center px-10 md:px-0 md:py-0 md:py-[20px] md:pl-[80px] md:pr-11 lg:pl-[120px] bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-3xl">
+      <h1 class="flex flex-1 items-center">
+        <a href="/" aria-label="Home" class="inline-block">
+          <img src="./img/logo.png" alt="Logo" class="max-w-[70px] h-auto">
+        </a>
+      </h1>
+
+      <button id="menu-toggle" class="relative z-50 flex h-10 w-10 flex-col items-center justify-center md:hidden">
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 translate-y-3"></span>
+        <span class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300"></span>
+        <span
+          class="hamburger-line absolute h-0.5 w-9 bg-black transition-transform duration-300 -translate-y-3"></span>
+      </button>
+
+      <div class="hidden justify-center md:flex md:flex-1 md:justify-end relative">
+        <ul class="flex space-x-2 md:space-x-4">
+          <li class="relative">
+            <a href="./graphic.html" id="dropdown-button"
+              class="flex items-center space-x-2 whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]">
+              WORKS
+              <svg id="dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+
+            <ul id="dropdown-menu" class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-lg hidden">
+              <li><a href="/web.html" class="block px-4 py-2 hover:bg-gray-200">web design</a></li>
+              <li><a href="/graphic1.html" class="block px-4 py-2 hover:bg-gray-200">graphic</a></li>
+              <li><a href="/photo.html" class="block px-4 py-2 hover:bg-gray-200">other</a></li>
+            </ul>
+          </li>
+
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="/about.html">ABOUT</a></li>
+          <li><a
+              class="whitespace-nowrap px-2 py-1 text-xs font-bold leading-none text-amber-900 hover:text-sky-600 md:text-[14px]"
+              href="/contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <script>
+        document.getElementById("dropdown-button").addEventListener("click", function (event) {
+          event.preventDefault();
+          var menu = document.getElementById("dropdown-menu");
+          var icon = document.getElementById("dropdown-icon");
+
+          menu.classList.toggle("hidden");
+          icon.classList.toggle("rotate-180");
+        });
+
+        document.addEventListener("click", function (event) {
+          var menu = document.getElementById("dropdown-menu");
+          var button = document.getElementById("dropdown-button");
+
+          if (!button.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.add("hidden");
+            document.getElementById("dropdown-icon").classList.remove("rotate-180");
+          }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const mobileDropdownButton = document.getElementById("mobile-dropdown-button");
+          const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu");
+          const mobileDropdownIcon = document.getElementById("mobile-dropdown-icon");
+
+          mobileDropdownButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            mobileDropdownMenu.classList.toggle("hidden");
+            mobileDropdownIcon.classList.toggle("rotate-180");
+          });
+        });
+
+      </script>
+
+  </header>
+  <div id="menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-30 hidden transition-opacity duration-300"></div>
+  <div id="mobile-menu"
+    class="fixed right-[-100%] top-0 z-40 h-full w-2/3 max-w-[300px] pr-10 bg-amber-900 bg-opacity-70 text-white transition-transform duration-300 md:hidden flex flex-col items-center justify-center">
+    <ul class="flex flex-col items-center space-y-6 pt-20">
+      <li class="relative w-full text-center">
+        <button id="mobile-dropdown-button"
+          class="w-full flex items-center justify-center space-x-2 text-lg text-white hover:text-sky-500">
+          WORKS
+          <svg id="mobile-dropdown-icon" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="mobile-dropdown-menu" class="hidden flex flex-col items-center space-y-2 mt-2">
+          <li><a href="/web.html" class="block px-4 py-2 hover:text-sky-300">WEB DESIGN</a></li>
+          <li><a href="/graphic1.html" class="block px-4 py-2 hover:text-sky-300">GRAPHIC</a></li>
+          <li><a href="/photo.html" class="block px-4 py-2 hover:text-sky-300">OTHER</a></li>
+        </ul>
+      </li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="/about.html">ABOUT</a></li>
+      <li><a class="text-white text-lg hover:text-sky-500" href="/contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuOverlay = document.getElementById("menu-overlay");
+
+      // 切换菜单开关
+      menuToggle.addEventListener("click", function () {
+        const isOpen = mobileMenu.style.right === "0px";
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // 点击遮罩层时关闭菜单
+      menuOverlay.addEventListener("click", closeMenu);
+
+      function openMenu() {
+        mobileMenu.style.right = "0px";  // 滑入可见区域
+        menuOverlay.classList.remove("hidden"); // 显示遮罩层
+        menuOverlay.classList.add("opacity-100"); // 淡入
+        menuToggle.classList.add("open"); // 触发汉堡动画
+      }
+
+      function closeMenu() {
+        mobileMenu.style.right = "-100%";  // 滑出隐藏
+        menuOverlay.classList.add("hidden"); // 隐藏遮罩层
+        menuOverlay.classList.remove("opacity-100"); // 淡出
+        menuToggle.classList.remove("open"); // 复原汉堡按钮动画
+      }
+    });
+
+  </script>
+
+  <style>
+    .hamburger-line {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menu-toggle.open .hamburger-line:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+  </style>
+
+  <div class="max-w-3xl py-8 mx-auto w-full">
+    <h1 class="text-4xl text-black font-bold py-8 text-center">ABOUT</h1>
+
+    <div class="flex flex-row mx-8">
+
+      <div class="basis-2/3">
+        <p class="py-8 font-bold text-xl text-amber-900">銭 彬潔／QIAN BINJIE</p>
+
+        <p class="text-sm leading-relaxed">
+          ご覧いただきありがとうございます。<br>
+          大学を卒業後、未経験からWEBデザイナーとしてのキャリアを築くため、独学で2年の経験を積んでまいりました。
+
+          <br>まだまだ微経験ですが、私は何事にも積極的かつ自主的に取り組む姿勢を持っています。今後もさらなるスキルアップと成長を目指し、新たなチャレンジにも積極的に取り組んでいきたいと考えています。
+
+          <br>制作物に関しては、是非リングから飛んで見てください。どうぞよろしくお願いいたします。
+        </p>
+
+        <p class="py-8 font-bold text-xl text-amber-900">連絡先</p>
+
+        <div class="flex flex-col text-gray-800 font-medium w-full">
+          <div class="flex py-2 space-x-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75-1.5.75a3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0L3 16.5m15-3.379a48.474 48.474 0 0 0-6-.371c-2.032 0-4.034.126-6 .371m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.169c0 .621-.504 1.125-1.125 1.125H4.125A1.125 1.125 0 0 1 3 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 0 1 6 13.12M12.265 3.11a.375.375 0 1 1-.53 0L12 2.845l.265.265Zm-3 0a.375.375 0 1 1-.53 0L9 2.845l.265.265Zm6 0a.375.375 0 1 1-.53 0L15 2.845l.265.265Z" />
+            </svg>
+
+            <span>BRITH：1996-09-18</span>
+          </div>
+
+          <div class="flex py-2 space-x-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+            </svg>
+            <span>FROM：SHANGHAI</span>
+          </div>
+
+          <div class="flex py-2 space-x-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            </svg>
+            <span>TEL：080-1398-1456</span>
+          </div>
+          <div class="flex py-2 space-x-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+            <span>E-mail：senhinketsu@gmail.com</span>
+          </div>
+        </div>
+
+        <p class="py-8 font-bold text-xl text-amber-900">スキル</p>
+        <div class="space-y-4 w-64">
+          <div>
+            <span class="text-gray-800 font-medium">Photoshop</span>
+            <div class="my-1 h-3 w-full bg-gray-300 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-900 rounded-full" style="width: 90%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-gray-800 font-medium">Illustrator</span>
+            <div class="mt-1 h-3 w-full bg-gray-300 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-900 rounded-full" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-gray-800 font-medium">Adobe Premiere Pro</span>
+            <div class="mt-1 h-3 w-full bg-gray-300 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-900 rounded-full" style="width: 70%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-gray-800 font-medium">Wordpress</span>
+            <div class="mt-1 h-3 w-full bg-gray-300 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-900 rounded-full" style="width: 78%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-gray-800 font-medium">HTML/CSS</span>
+            <div class="mt-1 h-3 w-full bg-gray-300 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-900 rounded-full" style="width: 70%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-gray-800 font-medium">JaveScript</span>
+            <div class="mt-1 h-3 w-full bg-gray-300 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-900 rounded-full" style="width: 40%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-gray-800 font-medium">Figma</span>
+            <div class="mt-1 h-3 w-full bg-gray-300 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-900 rounded-full" style="width: 50%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="py-8 font-bold text-xl text-amber-900">趣味</p>
+
+        <div class="flex py-2 space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+          </svg>
+
+          <span>撮影</span>
+        </div>
+        <div class="flex py-2 space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+          </svg>
+
+          <span>イラスト</span>
+        </div>
+        <div class="flex py-2 space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819" />
+          </svg>
+          <span>インテリア</span>
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="basis-1/3 relative size-32">
+        <div class="absolute inset-y-0 right-0 w-16">
+          <img src="https://amimiq.wordpress.com/wp-content/uploads/2024/03/am.png" alt="logo" style="width: 70px;">
+        </div>
+      </div>
+
+
+
+
+    </div>
+</body>
+
+</html>
