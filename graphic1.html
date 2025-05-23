@@ -327,12 +327,15 @@
       </svg>
     </button>
     <script>
-      var msnry = new Masonry('#gallery', {
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-item',
-        percentPosition: true,
-        gutter: 16
-      });
+imagesLoaded('#gallery', function () {
+  new Masonry('#gallery', {
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-item',
+    percentPosition: true,
+    gutter: 16
+  });
+});
+
       function openModal(title, content, images) {
         document.getElementById("modal-title").innerText = title;
         document.getElementById("modal-content").innerText = content;
